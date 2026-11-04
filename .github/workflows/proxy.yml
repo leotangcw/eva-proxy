@@ -1,5 +1,7 @@
 name: proxy
 on:
+  repository_dispatch:
+    types: [fetch]
   workflow_dispatch:
     inputs:
       url:
