@@ -21,8 +21,8 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     env:
-      URL: ${{ inputs.url || github.event.client_payload.url }}
-      MODE: ${{ inputs.mode || github.event.client_payload.mode }}
+      URL: ${{ inputs.url || github.event.client_payload.url || 'UCYxwJRiWbMysWyezLBTlY_g' }}
+      MODE: ${{ inputs.mode || github.event.client_payload.mode || 'innertube' }}
       QUERY: ${{ inputs.query || github.event.client_payload.query }}
     steps:
       - name: fetch
