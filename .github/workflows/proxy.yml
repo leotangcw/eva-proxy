@@ -21,14 +21,18 @@ on:
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    env:
+      URL: ${{ inputs.url || github.event.client_payload.url }}
+      MODE: ${{ inputs.mode || github.event.client_payload.mode }}
+      QUERY: ${{ inputs.query || github.event.client_payload.query }}
     steps:
       - name: Fetch remote URL or search
         shell: bash
         run: |
           set +e
-          URL="${{ inputs.url }}"
-          MODE="${{ inputs.mode }}"
-          QUERY="${{ inputs.query }}"
+          URL="${URL}"
+          MODE="${MODE:-get}"
+          QUERY="${QUERY}"
           OUT=/tmp/out.md
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
           if [ "$MODE" = "search" ]; then
