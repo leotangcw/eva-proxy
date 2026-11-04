@@ -36,5 +36,5 @@ jobs:
           name: result
           path: |
             /tmp/pages/out.md
-            /tmp/pages/raw_page.html
+            /tmp/pages/raw_*
           retention-days: 1
